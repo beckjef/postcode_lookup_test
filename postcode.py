@@ -19,10 +19,10 @@ try:
         file_details = {"FileName":postcodes.name,"FileType":postcodes.type,"FileSize":postcodes.size}
         st.write(file_details)
         df_pcode = pd.read_excel(postcodes, header=None)
-        postcodes = df_pcode[0]
+        p_code = df_pcode[0]
     else:
         st.write('Please upload an Excel file with all postcodes in the first column')
-        postcodes = ['WC1B 3HF']
+        p_code = ['WC1B 3HF']
 except:
     st.sidebar.write('*This is not a valid XLSX file. Please try again* :sunglasses:')
     
@@ -39,9 +39,9 @@ county = []
 progress_bar = st.progress(0)
 
 
-for p in postcodes:
+for i in range(len(p_code)):
     try:
-        r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p))
+        r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p_code[i]))
         lat.append(r.json()['result']['latitude'])
         lon.append(r.json()['result']['longitude'])
         la.append(r.json()['result']['admin_district'].split(',')[0])
