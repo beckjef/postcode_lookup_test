@@ -26,9 +26,6 @@ try:
 except:
     st.write('Error')
     
-
-
-
 # get data
 
 lat = []
@@ -75,7 +72,7 @@ st.success('Done!')
 
 
 # create map
-m = folium.Map(location=[lat[0], lon[0]],
+m = folium.Map(location=[df['Latitude'][0], df['Longitude'][0]],
                min_zoom=7, 
                max_zoom=16,
                zoom_start=15 )
@@ -109,7 +106,7 @@ marker_cluster = MarkerCluster().add_to(point)
 
 for i in range(len(df)):
     folium.Circle(
-      location=[lat[i], lon[i]],
+      location=[df['Latitude'][i], df['Longitude'][i]],
       popup=('IMD Decile: {} \n IMD Rank: {:,}' .format(df['IMD Decile'].iloc[i],df['IMD Rank'].iloc[i])),
       radius=150,
       color='#dd3497',
