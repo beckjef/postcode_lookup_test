@@ -24,7 +24,7 @@ try:
         st.write('Please upload a CSV file with all postcodes in the first column')
         p_code = ['WC1B 3HF']
 except:
-    st.sidebar.write('*This is not a valid XLSX file. Please try again* :sunglasses:')
+    st.sidebar.write('*This is not a valid CSV file. Please try again* :sunglasses:')
     p_code = ['WC1B 3HF']
     
 # get data
