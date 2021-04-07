@@ -1,0 +1,319 @@
+﻿LA_Code,LA_Name,Active_Partnership_CODE,Active_Partnership_NAME,Active_Partnership_Label,Region
+E06000047,County Durham,CSP001,Durham,County Durham Sport,North East
+E06000001,Hartlepool,CSP002,Tees Valley,Tees Valley Sport,North East
+E06000002,Middlesbrough,CSP002,Tees Valley,Tees Valley Sport,North East
+E06000003,Redcar and Cleveland,CSP002,Tees Valley,Tees Valley Sport,North East
+E06000004,Stockton-on-Tees,CSP002,Tees Valley,Tees Valley Sport,North East
+E06000005,Darlington,CSP002,Tees Valley,Tees Valley Sport,North East
+E06000057,Northumberland,CSP003,Northumberland,Northumberland Sport (NNEAP),North East
+E08000022,North Tyneside,CSP004,Tyne and Wear,Tyne and Wear Sport (NNEAP),North East
+E08000023,South Tyneside,CSP004,Tyne and Wear,Tyne and Wear Sport (NNEAP),North East
+E08000024,Sunderland,CSP004,Tyne and Wear,Tyne and Wear Sport (NNEAP),North East
+E08000021,Newcastle upon Tyne,CSP004,Tyne and Wear,Tyne and Wear Sport (NNEAP),North East
+E08000037,Gateshead,CSP004,Tyne and Wear,Tyne and Wear Sport (NNEAP),North East
+E06000007,Warrington,CSP005,Cheshire,Active Cheshire,North West
+E06000049,Cheshire East,CSP005,Cheshire,Active Cheshire,North West
+E06000050,Cheshire West and Chester,CSP005,Cheshire,Active Cheshire,North West
+E07000026,Allerdale,CSP006,Cumbria,Active Cumbria,North West
+E07000027,Barrow-in-Furness,CSP006,Cumbria,Active Cumbria,North West
+E07000028,Carlisle,CSP006,Cumbria,Active Cumbria,North West
+E07000029,Copeland,CSP006,Cumbria,Active Cumbria,North West
+E07000030,Eden,CSP006,Cumbria,Active Cumbria,North West
+E07000031,South Lakeland,CSP006,Cumbria,Active Cumbria,North West
+E06000008,Blackburn with Darwen,CSP007,Lancashire,Active Lancashire,North West
+E06000009,Blackpool,CSP007,Lancashire,Active Lancashire,North West
+E07000117,Burnley,CSP007,Lancashire,Active Lancashire,North West
+E07000122,Pendle,CSP007,Lancashire,Active Lancashire,North West
+E07000123,Preston,CSP007,Lancashire,Active Lancashire,North West
+E07000118,Chorley,CSP007,Lancashire,Active Lancashire,North West
+E07000126,South Ribble,CSP007,Lancashire,Active Lancashire,North West
+E07000119,Fylde,CSP007,Lancashire,Active Lancashire,North West
+E07000120,Hyndburn,CSP007,Lancashire,Active Lancashire,North West
+E07000121,Lancaster,CSP007,Lancashire,Active Lancashire,North West
+E07000124,Ribble Valley,CSP007,Lancashire,Active Lancashire,North West
+E07000125,Rossendale,CSP007,Lancashire,Active Lancashire,North West
+E07000127,West Lancashire,CSP007,Lancashire,Active Lancashire,North West
+E07000128,Wyre,CSP007,Lancashire,Active Lancashire,North West
+E08000005,Rochdale,CSP008,Greater Manchester,Greater Sport,North West
+E08000006,Salford,CSP008,Greater Manchester,Greater Sport,North West
+E08000003,Manchester,CSP008,Greater Manchester,Greater Sport,North West
+E08000004,Oldham,CSP008,Greater Manchester,Greater Sport,North West
+E08000001,Bolton,CSP008,Greater Manchester,Greater Sport,North West
+E08000002,Bury,CSP008,Greater Manchester,Greater Sport,North West
+E08000007,Stockport,CSP008,Greater Manchester,Greater Sport,North West
+E08000008,Tameside,CSP008,Greater Manchester,Greater Sport,North West
+E08000009,Trafford,CSP008,Greater Manchester,Greater Sport,North West
+E08000010,Wigan,CSP008,Greater Manchester,Greater Sport,North West
+E06000006,Halton,CSP009,Merseyside,MSP (Merseyside),North West
+E08000013,St. Helens,CSP009,Merseyside,MSP (Merseyside),North West
+E08000011,Knowsley,CSP009,Merseyside,MSP (Merseyside),North West
+E08000012,Liverpool,CSP009,Merseyside,MSP (Merseyside),North West
+E08000014,Sefton,CSP009,Merseyside,MSP (Merseyside),North West
+E08000015,Wirral,CSP009,Merseyside,MSP (Merseyside),North West
+E08000032,Bradford,CSP010,West Yorkshire,Yorkshire Sport Foundation (West Yorkshire),Yorkshire
+E08000033,Calderdale,CSP010,West Yorkshire,Yorkshire Sport Foundation (West Yorkshire),Yorkshire
+E08000034,Kirklees,CSP010,West Yorkshire,Yorkshire Sport Foundation (West Yorkshire),Yorkshire
+E08000036,Wakefield,CSP010,West Yorkshire,Yorkshire Sport Foundation (West Yorkshire),Yorkshire
+E08000035,Leeds,CSP010,West Yorkshire,Yorkshire Sport Foundation (West Yorkshire),Yorkshire
+E06000010,"Kingston upon Hull, City of",CSP011,Humber,Active Humber,Yorkshire
+E06000011,East Riding of Yorkshire,CSP011,Humber,Active Humber,Yorkshire
+E06000012,North East Lincolnshire,CSP011,Humber,Active Humber,Yorkshire
+E06000013,North Lincolnshire,CSP011,Humber,Active Humber,Yorkshire
+E08000016,Barnsley,CSP012,South Yorkshire,Yorkshire Sport Foundation (South Yorkshire),Yorkshire
+E08000017,Doncaster,CSP012,South Yorkshire,Yorkshire Sport Foundation (South Yorkshire),Yorkshire
+E08000018,Rotherham,CSP012,South Yorkshire,Yorkshire Sport Foundation (South Yorkshire),Yorkshire
+E08000019,Sheffield,CSP012,South Yorkshire,Yorkshire Sport Foundation (South Yorkshire),Yorkshire
+E06000014,York,CSP013,North Yorkshire,North Yorkshire Sport,Yorkshire
+E07000163,Craven,CSP013,North Yorkshire,North Yorkshire Sport,Yorkshire
+E07000164,Hambleton,CSP013,North Yorkshire,North Yorkshire Sport,Yorkshire
+E07000165,Harrogate,CSP013,North Yorkshire,North Yorkshire Sport,Yorkshire
+E07000166,Richmondshire,CSP013,North Yorkshire,North Yorkshire Sport,Yorkshire
+E07000167,Ryedale,CSP013,North Yorkshire,North Yorkshire Sport,Yorkshire
+E07000168,Scarborough,CSP013,North Yorkshire,North Yorkshire Sport,Yorkshire
+E07000169,Selby,CSP013,North Yorkshire,North Yorkshire Sport,Yorkshire
+E07000202,Ipswich,CSP014,Suffolk,Active Suffolk,East
+E07000200,Babergh,CSP014,Suffolk,Active Suffolk,East
+E07000203,Mid Suffolk,CSP014,Suffolk,Active Suffolk,East
+E07000244,East Suffolk,CSP014,Suffolk,Active Suffolk,East
+E07000245,West Suffolk,CSP014,Suffolk,Active Suffolk,East
+E06000032,Luton,CSP015,Bedfordshire,Team Beds & Luton,East
+E06000055,Bedford,CSP015,Bedfordshire,Team Beds & Luton,East
+E06000056,Central Bedfordshire,CSP015,Bedfordshire,Team Beds & Luton,East
+E06000031,Peterborough,CSP016,Cambridgeshire,Living Sport - Cambridgeshire & Peterborough Sports Partnership,East
+E07000008,Cambridge,CSP016,Cambridgeshire,Living Sport - Cambridgeshire & Peterborough Sports Partnership,East
+E07000009,East Cambridgeshire,CSP016,Cambridgeshire,Living Sport - Cambridgeshire & Peterborough Sports Partnership,East
+E07000010,Fenland,CSP016,Cambridgeshire,Living Sport - Cambridgeshire & Peterborough Sports Partnership,East
+E07000011,Huntingdonshire,CSP016,Cambridgeshire,Living Sport - Cambridgeshire & Peterborough Sports Partnership,East
+E07000012,South Cambridgeshire,CSP016,Cambridgeshire,Living Sport - Cambridgeshire & Peterborough Sports Partnership,East
+E07000143,Breckland,CSP017,Norfolk,Active Norfolk,East
+E07000144,Broadland,CSP017,Norfolk,Active Norfolk,East
+E07000145,Great Yarmouth,CSP017,Norfolk,Active Norfolk,East
+E07000146,King's Lynn and West Norfolk,CSP017,Norfolk,Active Norfolk,East
+E07000147,North Norfolk,CSP017,Norfolk,Active Norfolk,East
+E07000148,Norwich,CSP017,Norfolk,Active Norfolk,East
+E07000149,South Norfolk,CSP017,Norfolk,Active Norfolk,East
+E06000033,Southend-on-Sea,CSP018,Essex,Active Essex,East
+E07000068,Brentwood,CSP018,Essex,Active Essex,East
+E06000034,Thurrock,CSP018,Essex,Active Essex,East
+E07000066,Basildon,CSP018,Essex,Active Essex,East
+E07000067,Braintree,CSP018,Essex,Active Essex,East
+E07000069,Castle Point,CSP018,Essex,Active Essex,East
+E07000070,Chelmsford,CSP018,Essex,Active Essex,East
+E07000071,Colchester,CSP018,Essex,Active Essex,East
+E07000072,Epping Forest,CSP018,Essex,Active Essex,East
+E07000073,Harlow,CSP018,Essex,Active Essex,East
+E07000074,Maldon,CSP018,Essex,Active Essex,East
+E07000075,Rochford,CSP018,Essex,Active Essex,East
+E07000076,Tendring,CSP018,Essex,Active Essex,East
+E07000077,Uttlesford,CSP018,Essex,Active Essex,East
+E07000103,Watford,CSP019,Hertfordshire,Herts Sports Partnership,East
+E07000095,Broxbourne,CSP019,Hertfordshire,Herts Sports Partnership,East
+E07000096,Dacorum,CSP019,Hertfordshire,Herts Sports Partnership,East
+E07000098,Hertsmere,CSP019,Hertfordshire,Herts Sports Partnership,East
+E07000099,North Hertfordshire,CSP019,Hertfordshire,Herts Sports Partnership,East
+E07000102,Three Rivers,CSP019,Hertfordshire,Herts Sports Partnership,East
+E07000241,Welwyn Hatfield,CSP019,Hertfordshire,Herts Sports Partnership,East
+E07000240,St Albans,CSP019,Hertfordshire,Herts Sports Partnership,East
+E07000242,East Hertfordshire,CSP019,Hertfordshire,Herts Sports Partnership,East
+E07000243,Stevenage,CSP019,Hertfordshire,Herts Sports Partnership,East
+E06000016,Leicester,CSP020,Leicestershire,Leicestershire & Rutland Sport,East Midlands
+E06000017,Rutland,CSP020,Leicestershire,Leicestershire & Rutland Sport,East Midlands
+E07000129,Blaby,CSP020,Leicestershire,Leicestershire & Rutland Sport,East Midlands
+E07000130,Charnwood,CSP020,Leicestershire,Leicestershire & Rutland Sport,East Midlands
+E07000131,Harborough,CSP020,Leicestershire,Leicestershire & Rutland Sport,East Midlands
+E07000132,Hinckley and Bosworth,CSP020,Leicestershire,Leicestershire & Rutland Sport,East Midlands
+E07000134,North West Leicestershire,CSP020,Leicestershire,Leicestershire & Rutland Sport,East Midlands
+E07000133,Melton,CSP020,Leicestershire,Leicestershire & Rutland Sport,East Midlands
+E07000135,Oadby and Wigston,CSP020,Leicestershire,Leicestershire & Rutland Sport,East Midlands
+E07000136,Boston,CSP021,Lincolnshire,Active Lincolnshire,East Midlands
+E07000137,East Lindsey,CSP021,Lincolnshire,Active Lincolnshire,East Midlands
+E07000138,Lincoln,CSP021,Lincolnshire,Active Lincolnshire,East Midlands
+E07000139,North Kesteven,CSP021,Lincolnshire,Active Lincolnshire,East Midlands
+E07000140,South Holland,CSP021,Lincolnshire,Active Lincolnshire,East Midlands
+E07000141,South Kesteven,CSP021,Lincolnshire,Active Lincolnshire,East Midlands
+E07000142,West Lindsey,CSP021,Lincolnshire,Active Lincolnshire,East Midlands
+E07000150,Corby,CSP022,Northamptonshire,Northamptonshire Sport,East Midlands
+E07000151,Daventry,CSP022,Northamptonshire,Northamptonshire Sport,East Midlands
+E07000152,East Northamptonshire,CSP022,Northamptonshire,Northamptonshire Sport,East Midlands
+E07000153,Kettering,CSP022,Northamptonshire,Northamptonshire Sport,East Midlands
+E07000154,Northampton,CSP022,Northamptonshire,Northamptonshire Sport,East Midlands
+E07000155,South Northamptonshire,CSP022,Northamptonshire,Northamptonshire Sport,East Midlands
+E07000156,Wellingborough,CSP022,Northamptonshire,Northamptonshire Sport,East Midlands
+E06000015,Derby,CSP023,Derbyshire,Active Derbyshire (Active Partners Trust),East Midlands
+E07000033,Bolsover,CSP023,Derbyshire,Active Derbyshire (Active Partners Trust),East Midlands
+E07000034,Chesterfield,CSP023,Derbyshire,Active Derbyshire (Active Partners Trust),East Midlands
+E07000035,Derbyshire Dales,CSP023,Derbyshire,Active Derbyshire (Active Partners Trust),East Midlands
+E07000032,Amber Valley,CSP023,Derbyshire,Active Derbyshire (Active Partners Trust),East Midlands
+E07000036,Erewash,CSP023,Derbyshire,Active Derbyshire (Active Partners Trust),East Midlands
+E07000037,High Peak,CSP023,Derbyshire,Active Derbyshire (Active Partners Trust),East Midlands
+E07000038,North East Derbyshire,CSP023,Derbyshire,Active Derbyshire (Active Partners Trust),East Midlands
+E07000039,South Derbyshire,CSP023,Derbyshire,Active Derbyshire (Active Partners Trust),East Midlands
+E06000018,Nottingham,CSP024,Nottinghamshire,Active Notts (Active Partners Trust),East Midlands
+E07000170,Ashfield,CSP024,Nottinghamshire,Active Notts (Active Partners Trust),East Midlands
+E07000173,Gedling,CSP024,Nottinghamshire,Active Notts (Active Partners Trust),East Midlands
+E07000174,Mansfield,CSP024,Nottinghamshire,Active Notts (Active Partners Trust),East Midlands
+E07000171,Bassetlaw,CSP024,Nottinghamshire,Active Notts (Active Partners Trust),East Midlands
+E07000172,Broxtowe,CSP024,Nottinghamshire,Active Notts (Active Partners Trust),East Midlands
+E07000175,Newark and Sherwood,CSP024,Nottinghamshire,Active Notts (Active Partners Trust),East Midlands
+E07000176,Rushcliffe,CSP024,Nottinghamshire,Active Notts (Active Partners Trust),East Midlands
+E06000019,"Herefordshire, County of",CSP025,Hereford and Worcester,Sports Partnership Herefordshire & Worcestershire,West Midlands
+E07000237,Worcester,CSP025,Hereford and Worcester,Sports Partnership Herefordshire & Worcestershire,West Midlands
+E07000234,Bromsgrove,CSP025,Hereford and Worcester,Sports Partnership Herefordshire & Worcestershire,West Midlands
+E07000235,Malvern Hills,CSP025,Hereford and Worcester,Sports Partnership Herefordshire & Worcestershire,West Midlands
+E07000236,Redditch,CSP025,Hereford and Worcester,Sports Partnership Herefordshire & Worcestershire,West Midlands
+E07000238,Wychavon,CSP025,Hereford and Worcester,Sports Partnership Herefordshire & Worcestershire,West Midlands
+E07000239,Wyre Forest,CSP025,Hereford and Worcester,Sports Partnership Herefordshire & Worcestershire,West Midlands
+E07000218,North Warwickshire,CSP026,Warwickshire,"Think Active (Coventry, Solihull and Warwickshire)",West Midlands
+E07000219,Nuneaton and Bedworth,CSP026,Warwickshire,"Think Active (Coventry, Solihull and Warwickshire)",West Midlands
+E07000220,Rugby,CSP026,Warwickshire,"Think Active (Coventry, Solihull and Warwickshire)",West Midlands
+E07000221,Stratford-on-Avon,CSP026,Warwickshire,"Think Active (Coventry, Solihull and Warwickshire)",West Midlands
+E07000222,Warwick,CSP026,Warwickshire,"Think Active (Coventry, Solihull and Warwickshire)",West Midlands
+E08000026,Coventry,CSP026,Warwickshire,"Think Active (Coventry, Solihull and Warwickshire)",West Midlands
+E08000029,Solihull,CSP026,Warwickshire,"Think Active (Coventry, Solihull and Warwickshire)",West Midlands
+E06000020,Telford and Wrekin,CSP027,Shropshire,Energize Shropshire Telford & Wrekin,West Midlands
+E06000051,Shropshire,CSP027,Shropshire,Energize Shropshire Telford & Wrekin,West Midlands
+E08000025,Birmingham,CSP028,Birmingham,Sport Birmingham,West Midlands
+E08000027,Dudley,CSP029,Black Country,Active Black Country,West Midlands
+E08000028,Sandwell,CSP029,Black Country,Active Black Country,West Midlands
+E08000030,Walsall,CSP029,Black Country,Active Black Country,West Midlands
+E08000031,Wolverhampton,CSP029,Black Country,Active Black Country,West Midlands
+E06000021,Stoke-on-Trent,CSP030,Staffordshire,Sport Across Staffordshire and Stoke on Trent,West Midlands
+E07000192,Cannock Chase,CSP030,Staffordshire,Sport Across Staffordshire and Stoke on Trent,West Midlands
+E07000193,East Staffordshire,CSP030,Staffordshire,Sport Across Staffordshire and Stoke on Trent,West Midlands
+E07000194,Lichfield,CSP030,Staffordshire,Sport Across Staffordshire and Stoke on Trent,West Midlands
+E07000195,Newcastle-under-Lyme,CSP030,Staffordshire,Sport Across Staffordshire and Stoke on Trent,West Midlands
+E07000196,South Staffordshire,CSP030,Staffordshire,Sport Across Staffordshire and Stoke on Trent,West Midlands
+E07000197,Stafford,CSP030,Staffordshire,Sport Across Staffordshire and Stoke on Trent,West Midlands
+E07000198,Staffordshire Moorlands,CSP030,Staffordshire,Sport Across Staffordshire and Stoke on Trent,West Midlands
+E07000199,Tamworth,CSP030,Staffordshire,Sport Across Staffordshire and Stoke on Trent,West Midlands
+E09000005,Brent,CSP031,London Central,London Sport,London
+E09000021,Kingston upon Thames,CSP031,London Central,London Sport,London
+E09000022,Lambeth,CSP031,London Central,London Sport,London
+E09000006,Bromley,CSP031,London Central,London Sport,London
+E09000007,Camden,CSP031,London Central,London Sport,London
+E09000008,Croydon,CSP031,London Central,London Sport,London
+E09000009,Ealing,CSP031,London Central,London Sport,London
+E09000010,Enfield,CSP031,London Central,London Sport,London
+E09000011,Greenwich,CSP031,London Central,London Sport,London
+E09000012,Hackney,CSP031,London Central,London Sport,London
+E09000013,Hammersmith and Fulham,CSP031,London Central,London Sport,London
+E09000014,Haringey,CSP031,London Central,London Sport,London
+E09000015,Harrow,CSP031,London Central,London Sport,London
+E09000023,Lewisham,CSP031,London Central,London Sport,London
+E09000024,Merton,CSP031,London Central,London Sport,London
+E09000025,Newham,CSP031,London Central,London Sport,London
+E09000016,Havering,CSP031,London Central,London Sport,London
+E09000026,Redbridge,CSP031,London Central,London Sport,London
+E09000032,Wandsworth,CSP031,London Central,London Sport,London
+E09000033,Westminster,CSP031,London Central,London Sport,London
+E09000017,Hillingdon,CSP031,London Central,London Sport,London
+E09000018,Hounslow,CSP031,London Central,London Sport,London
+E09000019,Islington,CSP031,London Central,London Sport,London
+E09000004,Bexley,CSP031,London Central,London Sport,London
+E09000001,City of London,CSP031,London Central,London Sport,London
+E09000002,Barking and Dagenham,CSP031,London Central,London Sport,London
+E09000003,Barnet,CSP031,London Central,London Sport,London
+E09000020,Kensington and Chelsea,CSP031,London Central,London Sport,London
+E09000027,Richmond upon Thames,CSP031,London Central,London Sport,London
+E09000028,Southwark,CSP031,London Central,London Sport,London
+E09000029,Sutton,CSP031,London Central,London Sport,London
+E09000030,Tower Hamlets,CSP031,London Central,London Sport,London
+E09000031,Waltham Forest,CSP031,London Central,London Sport,London
+E06000044,Portsmouth,CSP032,Hampshire and the Isle of Wight,Energise Me (Hampshire and IOW),South East
+E06000045,Southampton,CSP032,Hampshire and the Isle of Wight,Energise Me (Hampshire and IOW),South East
+E06000046,Isle of Wight,CSP032,Hampshire and the Isle of Wight,Energise Me (Hampshire and IOW),South East
+E07000087,Fareham,CSP032,Hampshire and the Isle of Wight,Energise Me (Hampshire and IOW),South East
+E07000088,Gosport,CSP032,Hampshire and the Isle of Wight,Energise Me (Hampshire and IOW),South East
+E07000084,Basingstoke and Deane,CSP032,Hampshire and the Isle of Wight,Energise Me (Hampshire and IOW),South East
+E07000089,Hart,CSP032,Hampshire and the Isle of Wight,Energise Me (Hampshire and IOW),South East
+E07000085,East Hampshire,CSP032,Hampshire and the Isle of Wight,Energise Me (Hampshire and IOW),South East
+E07000086,Eastleigh,CSP032,Hampshire and the Isle of Wight,Energise Me (Hampshire and IOW),South East
+E07000090,Havant,CSP032,Hampshire and the Isle of Wight,Energise Me (Hampshire and IOW),South East
+E07000091,New Forest,CSP032,Hampshire and the Isle of Wight,Energise Me (Hampshire and IOW),South East
+E07000092,Rushmoor,CSP032,Hampshire and the Isle of Wight,Energise Me (Hampshire and IOW),South East
+E07000093,Test Valley,CSP032,Hampshire and the Isle of Wight,Energise Me (Hampshire and IOW),South East
+E07000094,Winchester,CSP032,Hampshire and the Isle of Wight,Energise Me (Hampshire and IOW),South East
+E06000035,Medway,CSP033,Kent,Kent Sport,South East
+E07000105,Ashford,CSP033,Kent,Kent Sport,South East
+E07000106,Canterbury,CSP033,Kent,Kent Sport,South East
+E07000107,Dartford,CSP033,Kent,Kent Sport,South East
+E07000108,Dover,CSP033,Kent,Kent Sport,South East
+E07000109,Gravesham,CSP033,Kent,Kent Sport,South East
+E07000110,Maidstone,CSP033,Kent,Kent Sport,South East
+E07000111,Sevenoaks,CSP033,Kent,Kent Sport,South East
+E07000112,Folkestone and Hythe,CSP033,Kent,Kent Sport,South East
+E07000113,Swale,CSP033,Kent,Kent Sport,South East
+E07000114,Thanet,CSP033,Kent,Kent Sport,South East
+E07000115,Tonbridge and Malling,CSP033,Kent,Kent Sport,South East
+E07000116,Tunbridge Wells,CSP033,Kent,Kent Sport,South East
+E07000178,Oxford,CSP034,Oxfordshire,Active Oxfordshire,South East
+E07000177,Cherwell,CSP034,Oxfordshire,Active Oxfordshire,South East
+E07000179,South Oxfordshire,CSP034,Oxfordshire,Active Oxfordshire,South East
+E07000180,Vale of White Horse,CSP034,Oxfordshire,Active Oxfordshire,South East
+E07000181,West Oxfordshire,CSP034,Oxfordshire,Active Oxfordshire,South East
+E06000042,Milton Keynes,CSP035,Buckinghamshire,Leap - Bucks & Milton Keynes Sport and Physical Activity Partnership,South East
+E07000005,Chiltern,CSP035,Buckinghamshire,Leap - Bucks & Milton Keynes Sport and Physical Activity Partnership,South East
+E07000004,Aylesbury Vale,CSP035,Buckinghamshire,Leap - Bucks & Milton Keynes Sport and Physical Activity Partnership,South East
+E07000006,South Bucks,CSP035,Buckinghamshire,Leap - Bucks & Milton Keynes Sport and Physical Activity Partnership,South East
+E07000007,Wycombe,CSP035,Buckinghamshire,Leap - Bucks & Milton Keynes Sport and Physical Activity Partnership,South East
+E06000043,Brighton and Hove,CSP036,Sussex,Active Sussex,South East
+E06000043,The  Brighton and Hove,CSP037,Sussex,Active Sussex,South East
+E07000061,Eastbourne,CSP036,Sussex,Active Sussex,South East
+E07000062,Hastings,CSP036,Sussex,Active Sussex,South East
+E07000063,Lewes,CSP036,Sussex,Active Sussex,South East
+E07000064,Rother,CSP036,Sussex,Active Sussex,South East
+E07000065,Wealden,CSP036,Sussex,Active Sussex,South East
+E07000223,Adur,CSP036,Sussex,Active Sussex,South East
+E07000224,Arun,CSP036,Sussex,Active Sussex,South East
+E07000225,Chichester,CSP036,Sussex,Active Sussex,South East
+E07000226,Crawley,CSP036,Sussex,Active Sussex,South East
+E07000227,Horsham,CSP036,Sussex,Active Sussex,South East
+E07000228,Mid Sussex,CSP036,Sussex,Active Sussex,South East
+E07000229,Worthing,CSP036,Sussex,Active Sussex,South East
+E06000039,Slough,CSP037,Berkshire,Get Berkshire Active,South East
+E06000036,Bracknell Forest,CSP037,Berkshire,Get Berkshire Active,South East
+E06000037,West Berkshire,CSP037,Berkshire,Get Berkshire Active,South East
+E06000038,Reading,CSP037,Berkshire,Get Berkshire Active,South East
+E06000040,Windsor and Maidenhead,CSP037,Berkshire,Get Berkshire Active,South East
+E06000041,Wokingham,CSP037,Berkshire,Get Berkshire Active,South East
+E07000207,Elmbridge,CSP038,Surrey,Active Surrey,South East
+E07000208,Epsom and Ewell,CSP038,Surrey,Active Surrey,South East
+E07000212,Runnymede,CSP038,Surrey,Active Surrey,South East
+E07000213,Spelthorne,CSP038,Surrey,Active Surrey,South East
+E07000214,Surrey Heath,CSP038,Surrey,Active Surrey,South East
+E07000215,Tandridge,CSP038,Surrey,Active Surrey,South East
+E07000209,Guildford,CSP038,Surrey,Active Surrey,South East
+E07000210,Mole Valley,CSP038,Surrey,Active Surrey,South East
+E07000211,Reigate and Banstead,CSP038,Surrey,Active Surrey,South East
+E07000216,Waverley,CSP038,Surrey,Active Surrey,South East
+E07000217,Woking,CSP038,Surrey,Active Surrey,South East
+E06000030,Swindon,CSP039,Wiltshire,Wiltshire & Swindon Sport,South West
+E06000054,Wiltshire,CSP039,Wiltshire,Wiltshire & Swindon Sport,South West
+E07000187,Mendip,CSP040,Somerset,Somerset Activity & Sports Partnership,South West
+E07000188,Sedgemoor,CSP040,Somerset,Somerset Activity & Sports Partnership,South West
+E07000189,South Somerset,CSP040,Somerset,Somerset Activity & Sports Partnership,South West
+E07000246,Somerset West and Taunton,CSP040,Somerset,Somerset Activity & Sports Partnership,South West
+E06000022,Bath and North East Somerset,CSP041,West of England Sport Trust (WESPORT),Wesport,South West
+E06000023,"Bristol, City of",CSP041,West of England Sport Trust (WESPORT),Wesport,South West
+E06000024,North Somerset,CSP041,West of England Sport Trust (WESPORT),Wesport,South West
+E06000025,South Gloucestershire,CSP041,West of England Sport Trust (WESPORT),Wesport,South West
+E06000058,"Bournemouth, Christchurch and Poole",CSP042,Dorset,Active Dorset,South West
+E06000059,Dorset,CSP042,Dorset,Active Dorset,South West
+E06000026,Plymouth,CSP043,Devon,Active Devon,South West
+E06000027,Torbay,CSP043,Devon,Active Devon,South West
+E07000041,Exeter,CSP043,Devon,Active Devon,South West
+E07000042,Mid Devon,CSP043,Devon,Active Devon,South West
+E07000043,North Devon,CSP043,Devon,Active Devon,South West
+E07000044,South Hams,CSP043,Devon,Active Devon,South West
+E07000040,East Devon,CSP043,Devon,Active Devon,South West
+E07000045,Teignbridge,CSP043,Devon,Active Devon,South West
+E07000046,Torridge,CSP043,Devon,Active Devon,South West
+E07000047,West Devon,CSP043,Devon,Active Devon,South West
+E07000078,Cheltenham,CSP044,Gloucestershire,Active Gloucestershire,South West
+E07000079,Cotswold,CSP044,Gloucestershire,Active Gloucestershire,South West
+E07000080,Forest of Dean,CSP044,Gloucestershire,Active Gloucestershire,South West
+E07000081,Gloucester,CSP044,Gloucestershire,Active Gloucestershire,South West
+E07000082,Stroud,CSP044,Gloucestershire,Active Gloucestershire,South West
+E07000083,Tewkesbury,CSP044,Gloucestershire,Active Gloucestershire,South West
+E06000052,Cornwall,CSP045,Cornwall,Active Cornwall,South West
+E06000053,Isles of Scilly,,,,

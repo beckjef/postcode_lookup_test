@@ -119,6 +119,7 @@ try:
 
     folium.LayerControl(collapsed = False).add_to(m)
 
+
     # add map
     folium_static(m)
 
@@ -138,6 +139,8 @@ try:
 
     st.sidebar.write('### Download the results:')
     st.sidebar.markdown(get_table_download_link_csv(df), unsafe_allow_html=True)
+
+    
 
 except:
     st.sidebar.write('*Please upload a valid CSV file* :sunglasses:')
