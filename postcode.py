@@ -25,6 +25,7 @@ try:
         p_code = ['WC1B 3HF']
 except:
     st.sidebar.write('*This is not a valid XLSX file. Please try again* :sunglasses:')
+    p_code = ['WC1B 3HF']
     
 # get data
 
