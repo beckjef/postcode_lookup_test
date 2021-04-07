@@ -20,6 +20,7 @@ try:
         st.write(file_details)
         df_pcode = pd.read_excel(postcodes, header=None)
         p_code = df_pcode[0]
+        st.write(df_pcode)
     else:
         st.write('Please upload an Excel file with all postcodes in the first column')
         p_code = ['WC1B 3HF']
