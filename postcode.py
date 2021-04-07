@@ -13,16 +13,15 @@ st.sidebar.image('logo.png')
 
 
 
-postcodes = st.sidebar.file_uploader('File uploader', type=['xlsx'])
+postcodes = st.sidebar.file_uploader('File uploader', type=['csv'])
 try:
     if postcodes is not None:
         file_details = {"FileName":postcodes.name,"FileType":postcodes.type,"FileSize":postcodes.size}
         st.write(file_details)
-        df_pcode = pd.read_excel(postcodes, header=None)
+        df_pcode = pd.read_csv(postcodes, header=None)
         p_code = df_pcode[0]
-        st.write(df_pcode)
     else:
-        st.write('Please upload an Excel file with all postcodes in the first column')
+        st.write('Please upload a CSV file with all postcodes in the first column')
         p_code = ['WC1B 3HF']
 except:
     st.sidebar.write('*This is not a valid XLSX file. Please try again* :sunglasses:')
@@ -38,7 +37,6 @@ ew = []
 pc = []
 region = []
 county = []
-progress_bar = st.progress(0)
 
 
 for i in range(len(p_code)):
@@ -55,8 +53,8 @@ for i in range(len(p_code)):
     except:
         print('Not a valid postcode')
 
-df = pd.DataFrame(list(zip(region, county, la, pc, ew, lsoa, lat, lon)), 
-                columns= ['Region', 'County','Local Authority', 'Parliamentary Constituency', 'Electoral Ward',
+df = pd.DataFrame(list(zip(p_code,region, county, la, pc, ew, lsoa, lat, lon)), 
+                columns= ['Postcode','Region', 'County','Local Authority', 'Parliamentary Constituency', 'Electoral Ward',
                         'LSOA', 'Latitude', 'Longitude'])
 
 df['IMD Decile'] =""
