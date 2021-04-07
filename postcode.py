@@ -24,7 +24,7 @@ try:
         st.write('Please upload an Excel file with all postcodes in the first column')
         postcodes = ['WC1B 3HF']
 except:
-    st.write('Error')
+    st.sidebar.write('*This is not a valid XLSX file. Please try again* :sunglasses:')
     
 # get data
 
@@ -38,44 +38,48 @@ region = []
 county = []
 progress_bar = st.progress(0)
 
-with st.spinner('Running...'):
-    for p in postcodes:
-        try:
-            r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p))
-            lat.append(r.json()['result']['latitude'])
-            lon.append(r.json()['result']['longitude'])
-            la.append(r.json()['result']['admin_district'].split(',')[0])
-            lsoa.append(r.json()['result']['lsoa'])
-            ew.append(r.json()['result']['admin_ward'])
-            pc.append(r.json()['result']['parliamentary_constituency'])
-            region.append(r.json()['result']['region'])
-            county.append(r.json()['result']['admin_county'])
-        except:
-            print('Not a valid postcode')
 
-    df = pd.DataFrame(list(zip(region, county, la, pc, ew, lsoa, lat, lon)), 
-                    columns= ['Region', 'County','Local Authority', 'Parliamentary Constituency', 'Electoral Ward',
-                            'LSOA', 'Latitude', 'Longitude'])
+for p in postcodes:
+    try:
+        r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p))
+        lat.append(r.json()['result']['latitude'])
+        lon.append(r.json()['result']['longitude'])
+        la.append(r.json()['result']['admin_district'].split(',')[0])
+        lsoa.append(r.json()['result']['lsoa'])
+        ew.append(r.json()['result']['admin_ward'])
+        pc.append(r.json()['result']['parliamentary_constituency'])
+        region.append(r.json()['result']['region'])
+        county.append(r.json()['result']['admin_county'])
+    except:
+        print('Not a valid postcode')
 
-    df['IMD Decile'] =""
-    df['IMD Rank'] =""
-    df['IMD Score']=""
+df = pd.DataFrame(list(zip(region, county, la, pc, ew, lsoa, lat, lon)), 
+                columns= ['Region', 'County','Local Authority', 'Parliamentary Constituency', 'Electoral Ward',
+                        'LSOA', 'Latitude', 'Longitude'])
+
+df['IMD Decile'] =""
+df['IMD Rank'] =""
+df['IMD Score']=""
 
 # append IMD
 
-    for i in range(len(df)):
-        s = requests.get('https://services3.arcgis.com/ivmBBrHfQfDnDf8Q/arcgis/rest/services/Indices_of_Multiple_Deprivation_(IMD)_2019/FeatureServer/0/query?where=lsoa11nm%3D%27{}%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token='.format(df['LSOA'][i]))
-        df['IMD Decile'].iloc[i] = s.json()['features'][0]['attributes']['IMDDec0']
-        df['IMD Rank'].iloc[i] = s.json()['features'][0]['attributes']['IMDRank0']
-        df['IMD Score'].iloc[i] = s.json()['features'][0]['attributes']['IMDScore']
-st.success('Done!')
+for i in range(len(df)):
+    s = requests.get('https://services3.arcgis.com/ivmBBrHfQfDnDf8Q/arcgis/rest/services/Indices_of_Multiple_Deprivation_(IMD)_2019/FeatureServer/0/query?where=lsoa11nm%3D%27{}%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token='.format(df['LSOA'][i]))
+    df['IMD Decile'].iloc[i] = s.json()['features'][0]['attributes']['IMDDec0']
+    df['IMD Rank'].iloc[i] = s.json()['features'][0]['attributes']['IMDRank0']
+    df['IMD Score'].iloc[i] = s.json()['features'][0]['attributes']['IMDScore']
 
-
+try:
 # create map
-m = folium.Map(location=[df['Latitude'][0], df['Longitude'][0]],
-               min_zoom=7, 
-               max_zoom=16,
-               zoom_start=15 )
+    m = folium.Map(location=[df['Latitude'][0], df['Longitude'][0]],
+                min_zoom=7, 
+                max_zoom=16,
+                zoom_start=15 )
+except:
+    m = folium.Map(location=[51.108964, -0.754399],
+                min_zoom=7, 
+                max_zoom=16,
+                zoom_start=15 )
 
 folium.TileLayer(
         tiles = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
