@@ -33,7 +33,7 @@ try:
 except:
     st.sidebar.write('Invalid CSV')
 
-try:
+
     # get data
     @st.cache(suppress_st_warning=True)
     def get_pcode(p_code):
@@ -48,16 +48,17 @@ try:
         county.append(r.json()['result']['admin_county'])
             
         
-    lat = []
-    lon = []
-    la = []
-    lsoa = []
-    ew = []
-    pc = []
-    region = []
-    county = []
-    my_bar = st.progress(0)       
-            
+lat = []
+lon = []
+la = []
+lsoa = []
+ew = []
+pc = []
+region = []
+county = []
+my_bar = st.progress(0)       
+
+try:          
     for i in range(len(p_code)):
         get_pcode(p_code[i])
         my_bar.progress(i + 1)
@@ -84,6 +85,12 @@ try:
     df = df.merge(ap_df, how='inner', left_on= 'Local Authority', right_on='LA_Name')
     df.drop(['LA_Name'], axis=1, inplace=True)
     df.rename({'Active_Partnership_Label': 'Active Partnership'}, axis=1, inplace=True)
+
+except:
+    st.sidebar.write('*Please upload a valid CSV file* :sunglasses:')
+    st.write('Use the file upload widget in the sidebar to upload a CSV file containing the postcodes you are looking up.')
+    st.write('The data should be structured as per the image below:')
+    st.image('Example.JPG')
 
     try:
     # create map
@@ -182,10 +189,4 @@ try:
 
     st.sidebar.write('### Download the results:')
     st.sidebar.markdown(get_table_download_link_csv(df), unsafe_allow_html=True)  
-
-except:
-    st.sidebar.write('*Please upload a valid CSV file* :sunglasses:')
-    st.write('Use the file upload widget in the sidebar to upload a CSV file containing the postcodes you are looking up.')
-    st.write('The data should be structured as per the image below:')
-    st.image('Example.JPG')
 
