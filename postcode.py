@@ -7,6 +7,8 @@ from folium.plugins import MarkerCluster
 import requests
 import json
 import base64
+import os
+from datetime import datetime
 
 st.write('# Postcode Lookup')
 
@@ -76,6 +78,13 @@ try:
     df.rename({'Active_Partnership_Label': 'Active Partnership'}, axis=1, inplace=True)
 
     try:
+        # API for OS 
+        # key = st.secrets["key"]
+        date = datetime.now()
+        key = os.environ["key"]
+        layer = 'Outdoor_3857'
+        zxy_path = 'https://api.os.uk/maps/raster/v1/zxy/{}/{{z}}/{{x}}/{{y}}.png?key={}'.format(layer, key)
+#print('=> Constructed OS Maps ZXY API path: {}'.format(zxy_path))
     # create map
         m = folium.Map(location=[df['Latitude'][0], df['Longitude'][0]],
                     min_zoom=7, 
@@ -86,6 +95,14 @@ try:
                     min_zoom=7, 
                     max_zoom=16,
                     zoom_start=15 )
+
+    tile = folium.TileLayer(
+            tiles = zxy_path,
+            attr = 'Contains OS data © Crown copyright and database right {}'.format(date.year),
+            name = 'OS Outdoor 3857',
+            overlay = False,
+            control = True
+        ).add_to(m)
 
     folium.TileLayer(
             tiles = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
