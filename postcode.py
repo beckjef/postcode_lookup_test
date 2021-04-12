@@ -19,16 +19,16 @@ st.sidebar.write('### Please upload a CSV file with a single column of postcodes
 
 postcodes = st.sidebar.file_uploader('File uploader', type=['csv'])
 
-@st.cache(suppress_st_warning=True)
-def file_details(file):
-    file_details = {"FileName":file.name,"FileType":file.type,"FileSize":file.size}
-    st.write(file_details)
-    df_pcode = pd.read_csv(file, header=None)
-    p_code = df_pcode[0]
-    return p_code
 try:
+    @st.cache(suppress_st_warning=True)
+    def file_details_func(file):
+        file_details = {"FileName":file.name,"FileType":file.type,"FileSize":file.size}
+        st.write(file_details)
+        df_pcode = pd.read_csv(file, header=None)
+        p_code = df_pcode[0]
+        return p_code
     if postcodes is not None:
-        file_details(postcodes)
+        p_code = file_details_func(postcodes)
     # get data
 
     lat = []
