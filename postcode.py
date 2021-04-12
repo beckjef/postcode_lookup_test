@@ -29,20 +29,21 @@ try:
         return p_code
     if postcodes is not None:
         p_code = file_details_func(postcodes)
+    
     # get data
-
-    lat = []
-    lon = []
-    la = []
-    lsoa = []
-    ew = []
-    pc = []
-    region = []
-    county = []
-
     @st.cache(suppress_st_warning=True, allow_output_mutation=True)
     def get_pcode(p_code):
         my_bar = st.progress(0)
+        
+        lat = []
+        lon = []
+        la = []
+        lsoa = []
+        ew = []
+        pc = []
+        region = []
+        county = []
+
         for i in range(len(p_code)):
             my_bar.progress(i + 1)
             r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p_code[i]))
