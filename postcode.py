@@ -40,7 +40,7 @@ try:
     region = []
     county = []
 
-    @st.cache(suppress_st_warning=True)
+    @st.cache(suppress_st_warning=True, allow_output_mutation=True)
     def get_pcode(p_code):
         my_bar = st.progress(0)
         for i in range(len(p_code)):
