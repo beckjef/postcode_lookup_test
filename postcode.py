@@ -56,7 +56,7 @@ try:
         
         
         for i in range(len(p_code)):
-            df = get_pcode(p_code)
+            get_pcode(p_code)
             my_bar.progress(i + 1)
 
         df = pd.DataFrame(list(zip(p_code,region, county, la, pc, ew, lsoa, lat, lon)), 
