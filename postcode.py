@@ -44,9 +44,10 @@ try:
 
     for i in range(len(p_code)):
         try:
+            my_bar.progress(i + 1)
+            
             @st.cache(suppress_st_warning=True)
             def get_pcode(p_code):
-                my_bar.progress(i + 1)
                 r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p_code[i]))
                 lat.append(r.json()['result']['latitude'])
                 lon.append(r.json()['result']['longitude'])
