@@ -43,9 +43,8 @@ try:
     my_bar = st.progress(0)
 
     for i in range(len(p_code)):
+        my_bar.progress(i + 1)
         try:
-            my_bar.progress(i + 1)
-            
             @st.cache(suppress_st_warning=True)
             def get_pcode(p_code):
                 r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p_code[i]))
