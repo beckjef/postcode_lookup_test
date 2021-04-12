@@ -77,19 +77,20 @@ try:
     df.drop(['LA_Name'], axis=1, inplace=True)
     df.rename({'Active_Partnership_Label': 'Active Partnership'}, axis=1, inplace=True)
 
-    latlon = st.sidebar.text_input('Postcode finder:', value=df['Postcode'][0], max_chars=8, key=None, type='default')
- # API for OS 
-    # key = st.secrets["key"]
-    date = datetime.now()
-    key = os.environ["key"]
-    layer = 'Outdoor_3857'
-    zxy_path = 'https://api.os.uk/maps/raster/v1/zxy/{}/{{z}}/{{x}}/{{y}}.png?key={}'.format(layer, key)
-#print('=> Constructed OS Maps ZXY API path: {}'.format(zxy_path))
-
-    df_filter = df[df['Postcode']==latlon]
+    
 
     try:
     # create map
+        latlon = st.sidebar.text_input('Postcode finder:', value=df['Postcode'][0], max_chars=8, key=None, type='default')
+    # API for OS 
+        # key = st.secrets["key"]
+        date = datetime.now()
+        key = os.environ["key"]
+        layer = 'Outdoor_3857'
+        zxy_path = 'https://api.os.uk/maps/raster/v1/zxy/{}/{{z}}/{{x}}/{{y}}.png?key={}'.format(layer, key)
+
+        df_filter = df[df['Postcode']==latlon]
+        
         m = folium.Map(location=[df_filter['Latitude'][0], df_filter['Longitude'][0]],
                     min_zoom=7, 
                     max_zoom=16,
