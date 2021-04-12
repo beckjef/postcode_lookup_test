@@ -40,30 +40,29 @@ try:
     region = []
     county = []
 
-    my_bar = st.progress(0)
+    @st.cache(suppress_st_warning=True)
+    def get_pcode(p_code):
+        my_bar = st.progress(0)
+        for i in range(len(p_code)):
+            my_bar.progress(i + 1)
+            r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p_code[i]))
+            lat.append(r.json()['result']['latitude'])
+            lon.append(r.json()['result']['longitude'])
+            la.append(r.json()['result']['admin_district'].split(',')[0])
+            lsoa.append(r.json()['result']['lsoa'])
+            ew.append(r.json()['result']['admin_ward'])
+            pc.append(r.json()['result']['parliamentary_constituency'])
+            region.append(r.json()['result']['region'])
+            county.append(r.json()['result']['admin_county'])
 
-    for i in range(len(p_code)):
-        my_bar.progress(i + 1)
-        try:
-            @st.cache(suppress_st_warning=True)
-            def get_pcode(p_code):
-                r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p_code[i]))
-                lat.append(r.json()['result']['latitude'])
-                lon.append(r.json()['result']['longitude'])
-                la.append(r.json()['result']['admin_district'].split(',')[0])
-                lsoa.append(r.json()['result']['lsoa'])
-                ew.append(r.json()['result']['admin_ward'])
-                pc.append(r.json()['result']['parliamentary_constituency'])
-                region.append(r.json()['result']['region'])
-                county.append(r.json()['result']['admin_county'])
-
-                df = pd.DataFrame(list(zip(p_code,region, county, la, pc, ew, lsoa, lat, lon)), 
-                    columns= ['Postcode','Region', 'County','Local Authority', 'Parliamentary Constituency', 'Electoral Ward',
-                            'LSOA', 'Latitude', 'Longitude'])
-                return df
-            df = get_pcode(p_code)
-        except:
-            print('Not a valid postcode')
+            df = pd.DataFrame(list(zip(p_code,region, county, la, pc, ew, lsoa, lat, lon)), 
+                columns= ['Postcode','Region', 'County','Local Authority', 'Parliamentary Constituency', 'Electoral Ward',
+                        'LSOA', 'Latitude', 'Longitude'])
+            return df
+    try:
+        df = get_pcode(p_code)
+    except:
+        print('Not a valid postcode')
 
     df['IMD Decile'] =""
     df['IMD Rank'] =""
