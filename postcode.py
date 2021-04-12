@@ -19,19 +19,20 @@ st.sidebar.write('### Please upload a CSV file with a single column of postcodes
 
 postcodes = st.sidebar.file_uploader('File uploader', type=['csv'])
 
+@st.cache(suppress_st_warning=True)
+def file_details_func(file):
+    file_details = {"FileName":file.name,"FileType":file.type,"FileSize":file.size}
+    st.write(file_details)
+    df_pcode = pd.read_csv(file, header=None)
+    p_code = df_pcode[0]
+    return p_code
+
 try:
-    @st.cache(suppress_st_warning=True)
-    def file_details_func(file):
-        file_details = {"FileName":file.name,"FileType":file.type,"FileSize":file.size}
-        st.write(file_details)
-        df_pcode = pd.read_csv(file, header=None)
-        p_code = df_pcode[0]
-        return p_code
     if postcodes is not None:
         p_code = file_details_func(postcodes)
-    
+
     # get data
-    @st.cache(suppress_st_warning=True, allow_output_mutation=True)
+    @st.cache(suppress_st_warning=True)
     def get_pcode(p_code):
         r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p_code[i]))
         lat.append(r.json()['result']['latitude'])
@@ -42,28 +43,25 @@ try:
         pc.append(r.json()['result']['parliamentary_constituency'])
         region.append(r.json()['result']['region'])
         county.append(r.json()['result']['admin_county'])
+            
         
-    try:
-        lat = []
-        lon = []
-        la = []
-        lsoa = []
-        ew = []
-        pc = []
-        region = []
-        county = []
-        my_bar = st.progress(0)
-        
-        
-        for i in range(len(p_code)):
-            get_pcode(p_code)
-            my_bar.progress(i + 1)
+    lat = []
+    lon = []
+    la = []
+    lsoa = []
+    ew = []
+    pc = []
+    region = []
+    county = []
+    my_bar = st.progress(0)       
+            
+    for i in range(len(p_code)):
+        get_pcode(p_code[i])
+        my_bar.progress(i + 1)
 
-        df = pd.DataFrame(list(zip(p_code,region, county, la, pc, ew, lsoa, lat, lon)), 
-                columns= ['Postcode','Region', 'County','Local Authority', 'Parliamentary Constituency', 'Electoral Ward',
-                        'LSOA', 'Latitude', 'Longitude'])
-    except:
-        print('Not a valid postcode')
+    df = pd.DataFrame(list(zip(p_code,region, county, la, pc, ew, lsoa, lat, lon)), 
+                    columns= ['Postcode','Region', 'County','Local Authority', 'Parliamentary Constituency', 'Electoral Ward',
+                            'LSOA', 'Latitude', 'Longitude'])
 
     df['IMD Decile'] =""
     df['IMD Rank'] =""
@@ -180,10 +178,7 @@ try:
         return href
 
     st.sidebar.write('### Download the results:')
-    st.sidebar.markdown(get_table_download_link_csv(df), unsafe_allow_html=True)
-    
-
-    
+    st.sidebar.markdown(get_table_download_link_csv(df), unsafe_allow_html=True)  
 
 except:
     st.sidebar.write('*Please upload a valid CSV file* :sunglasses:')
