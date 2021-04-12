@@ -18,50 +18,41 @@ st.sidebar.image('logo.png')
 st.sidebar.write('### Please upload a CSV file with a single column of postcodes')
 
 postcodes = st.sidebar.file_uploader('File uploader', type=['csv'])
-
-@st.cache(suppress_st_warning=True)
-def file_details_func(file):
-    file_details = {"FileName":file.name,"FileType":file.type,"FileSize":file.size}
-    st.write(file_details)
-    df_pcode = pd.read_csv(file, header=None)
-    p_code = df_pcode[0]
-    return p_code
-
 try:
     if postcodes is not None:
-        p_code = file_details_func(postcodes)
-except:
-    st.sidebar.write('Invalid CSV')
+        file_details = {"FileName":postcodes.name,"FileType":postcodes.type,"FileSize":postcodes.size}
+        st.write(file_details)
+        df_pcode = pd.read_csv(postcodes, header=None)
+        p_code = df_pcode[0]
 
-
+    
     # get data
-    @st.cache(suppress_st_warning=True)
-    def get_pcode(p_code):
-        r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p_code[i]))
-        lat.append(r.json()['result']['latitude'])
-        lon.append(r.json()['result']['longitude'])
-        la.append(r.json()['result']['admin_district'].split(',')[0])
-        lsoa.append(r.json()['result']['lsoa'])
-        ew.append(r.json()['result']['admin_ward'])
-        pc.append(r.json()['result']['parliamentary_constituency'])
-        region.append(r.json()['result']['region'])
-        county.append(r.json()['result']['admin_county'])
-            
-        
-lat = []
-lon = []
-la = []
-lsoa = []
-ew = []
-pc = []
-region = []
-county = []
-my_bar = st.progress(0)       
 
-try:          
+    lat = []
+    lon = []
+    la = []
+    lsoa = []
+    ew = []
+    pc = []
+    region = []
+    county = []
+
+    my_bar = st.progress(0)
+
     for i in range(len(p_code)):
-        get_pcode(p_code[i])
-        my_bar.progress(i + 1)
+        try:
+            my_bar.progress(i + 1)
+            r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p_code[i]))
+            lat.append(r.json()['result']['latitude'])
+            lon.append(r.json()['result']['longitude'])
+            la.append(r.json()['result']['admin_district'].split(',')[0])
+            lsoa.append(r.json()['result']['lsoa'])
+            ew.append(r.json()['result']['admin_ward'])
+            pc.append(r.json()['result']['parliamentary_constituency'])
+            region.append(r.json()['result']['region'])
+            county.append(r.json()['result']['admin_county'])
+        except:
+            print('Not a valid postcode')
 
     df = pd.DataFrame(list(zip(p_code,region, county, la, pc, ew, lsoa, lat, lon)), 
                     columns= ['Postcode','Region', 'County','Local Authority', 'Parliamentary Constituency', 'Electoral Ward',
@@ -86,26 +77,11 @@ try:
     df.drop(['LA_Name'], axis=1, inplace=True)
     df.rename({'Active_Partnership_Label': 'Active Partnership'}, axis=1, inplace=True)
 
-except:
-    st.sidebar.write('*Please upload a valid CSV file* :sunglasses:')
-    st.write('Use the file upload widget in the sidebar to upload a CSV file containing the postcodes you are looking up.')
-    st.write('The data should be structured as per the image below:')
-    st.image('Example.JPG')
+    
 
     try:
     # create map
         latlon = st.sidebar.selectbox('Postcode finder:', df['Postcode'].unique())
-        try:
-            r = requests.get('https://api.postcodes.io/postcodes/{}'.format(latlon))
-            lat = r.json()['result']['latitude']
-            lon = r.json()['result']['longitude']
-            lsoa = r.json()['result']['lsoa']
-        except:
-            st.sidebar.write('*This is not a valid postcode. Please try again* :sunglasses:')
-            r = requests.get('https://api.postcodes.io/postcodes/{}'.format('WC1B3HF'))
-            lat = r.json()['result']['latitude']
-            lon = r.json()['result']['longitude']
-            lsoa = r.json()['result']['lsoa']
     # API for OS 
         # key = st.secrets["key"]
         date = datetime.now()
@@ -113,7 +89,9 @@ except:
         layer = 'Outdoor_3857'
         zxy_path = 'https://api.os.uk/maps/raster/v1/zxy/{}/{{z}}/{{x}}/{{y}}.png?key={}'.format(layer, key)
 
-        m = folium.Map(location=[lat,lon],
+        df_filter = df[df['Postcode']==latlon]
+
+        m = folium.Map(location=[df_filter['Latitude'][0], df_filter['Longitude'][0]],
                     min_zoom=7, 
                     max_zoom=16,
                     zoom_start=15 )
@@ -188,5 +166,14 @@ except:
         return href
 
     st.sidebar.write('### Download the results:')
-    st.sidebar.markdown(get_table_download_link_csv(df), unsafe_allow_html=True)  
+    st.sidebar.markdown(get_table_download_link_csv(df), unsafe_allow_html=True)
+    
+
+    
+
+except:
+    st.sidebar.write('*Please upload a valid CSV file* :sunglasses:')
+    st.write('Use the file upload widget in the sidebar to upload a CSV file containing the postcodes you are looking up.')
+    st.write('The data should be structured as per the image below:')
+    st.image('Example.JPG')
 
