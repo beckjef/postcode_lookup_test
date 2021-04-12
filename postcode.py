@@ -77,14 +77,15 @@ try:
     df.drop(['LA_Name'], axis=1, inplace=True)
     df.rename({'Active_Partnership_Label': 'Active Partnership'}, axis=1, inplace=True)
 
-    try:
-        # API for OS 
-        # key = st.secrets["key"]
-        date = datetime.now()
-        key = os.environ["key"]
-        layer = 'Outdoor_3857'
-        zxy_path = 'https://api.os.uk/maps/raster/v1/zxy/{}/{{z}}/{{x}}/{{y}}.png?key={}'.format(layer, key)
+ # API for OS 
+    # key = st.secrets["key"]
+    date = datetime.now()
+    key = os.environ["key"]
+    layer = 'Outdoor_3857'
+    zxy_path = 'https://api.os.uk/maps/raster/v1/zxy/{}/{{z}}/{{x}}/{{y}}.png?key={}'.format(layer, key)
 #print('=> Constructed OS Maps ZXY API path: {}'.format(zxy_path))
+
+    try:
     # create map
         m = folium.Map(location=[df['Latitude'][0], df['Longitude'][0]],
                     min_zoom=7, 
@@ -104,7 +105,7 @@ try:
             control = True
         ).add_to(m)
 
-    folium.TileLayer(
+    tile2 = folium.TileLayer(
             tiles = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
             attr = 'Esri',
             name = 'Esri Satellite',
