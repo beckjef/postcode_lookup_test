@@ -30,7 +30,10 @@ def file_details_func(file):
 try:
     if postcodes is not None:
         p_code = file_details_func(postcodes)
+except:
+    st.sidebar.write('Invalid CSV')
 
+try:
     # get data
     @st.cache(suppress_st_warning=True)
     def get_pcode(p_code):
