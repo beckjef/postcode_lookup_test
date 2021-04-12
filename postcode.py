@@ -44,22 +44,26 @@ try:
 
     for i in range(len(p_code)):
         try:
-            my_bar.progress(i + 1)
-            r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p_code[i]))
-            lat.append(r.json()['result']['latitude'])
-            lon.append(r.json()['result']['longitude'])
-            la.append(r.json()['result']['admin_district'].split(',')[0])
-            lsoa.append(r.json()['result']['lsoa'])
-            ew.append(r.json()['result']['admin_ward'])
-            pc.append(r.json()['result']['parliamentary_constituency'])
-            region.append(r.json()['result']['region'])
-            county.append(r.json()['result']['admin_county'])
-        except:
-            print('Not a valid postcode')
+            @st.cache(suppress_st_warning=True)
+            def get_pcode(p_code):
+                my_bar.progress(i + 1)
+                r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p_code[i]))
+                lat.append(r.json()['result']['latitude'])
+                lon.append(r.json()['result']['longitude'])
+                la.append(r.json()['result']['admin_district'].split(',')[0])
+                lsoa.append(r.json()['result']['lsoa'])
+                ew.append(r.json()['result']['admin_ward'])
+                pc.append(r.json()['result']['parliamentary_constituency'])
+                region.append(r.json()['result']['region'])
+                county.append(r.json()['result']['admin_county'])
 
-    df = pd.DataFrame(list(zip(p_code,region, county, la, pc, ew, lsoa, lat, lon)), 
+                df = pd.DataFrame(list(zip(p_code,region, county, la, pc, ew, lsoa, lat, lon)), 
                     columns= ['Postcode','Region', 'County','Local Authority', 'Parliamentary Constituency', 'Electoral Ward',
                             'LSOA', 'Latitude', 'Longitude'])
+                return df
+            df = get_pcode(p_code)
+        except:
+            print('Not a valid postcode')
 
     df['IMD Decile'] =""
     df['IMD Rank'] =""
@@ -79,8 +83,6 @@ try:
     df = df.merge(ap_df, how='inner', left_on= 'Local Authority', right_on='LA_Name')
     df.drop(['LA_Name'], axis=1, inplace=True)
     df.rename({'Active_Partnership_Label': 'Active Partnership'}, axis=1, inplace=True)
-
-    
 
     try:
     # create map
