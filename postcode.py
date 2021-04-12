@@ -37,11 +37,11 @@ try:
     region = []
     county = []
 
-    my_bar = st.progress(0)
+   # my_bar = st.progress(0)
 
     for i in range(len(p_code)):
         try:
-            my_bar.progress(i + 1)
+           # my_bar.progress(i + 1)
             r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p_code[i]))
             lat.append(r.json()['result']['latitude'])
             lon.append(r.json()['result']['longitude'])
@@ -77,21 +77,16 @@ try:
     df.drop(['LA_Name'], axis=1, inplace=True)
     df.rename({'Active_Partnership_Label': 'Active Partnership'}, axis=1, inplace=True)
 
-    
-
     try:
-    # create map
-        latlon = st.sidebar.selectbox('Postcode finder:', df['Postcode'].unique())
-    # API for OS 
+        # API for OS 
         # key = st.secrets["key"]
         date = datetime.now()
         key = os.environ["key"]
         layer = 'Outdoor_3857'
         zxy_path = 'https://api.os.uk/maps/raster/v1/zxy/{}/{{z}}/{{x}}/{{y}}.png?key={}'.format(layer, key)
-
-        df_filter = df[df['Postcode']==latlon]
-
-        m = folium.Map(location=[df_filter['Latitude'][0], df_filter['Longitude'][0]],
+#print('=> Constructed OS Maps ZXY API path: {}'.format(zxy_path))
+    # create map
+        m = folium.Map(location=[df['Latitude'][0], df['Longitude'][0]],
                     min_zoom=7, 
                     max_zoom=16,
                     zoom_start=15 )
@@ -109,7 +104,7 @@ try:
             control = True
         ).add_to(m)
 
-    tile2 = folium.TileLayer(
+    folium.TileLayer(
             tiles = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
             attr = 'Esri',
             name = 'Esri Satellite',
@@ -167,7 +162,6 @@ try:
 
     st.sidebar.write('### Download the results:')
     st.sidebar.markdown(get_table_download_link_csv(df), unsafe_allow_html=True)
-    
 
     
 
