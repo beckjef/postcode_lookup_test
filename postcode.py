@@ -25,9 +25,7 @@ try:
         df_pcode = pd.read_csv(postcodes, header=None)
         p_code = df_pcode[0]
 
-    
     # get data
-
     lat = []
     lon = []
     la = []
@@ -61,14 +59,21 @@ try:
     df['IMD Decile'] =""
     df['IMD Rank'] =""
     df['IMD Score']=""
+    df.reset_index(inplace = True, drop=True)
 
     # append IMD
 
     for i in range(len(df)):
-        s = requests.get('https://services3.arcgis.com/ivmBBrHfQfDnDf8Q/arcgis/rest/services/Indices_of_Multiple_Deprivation_(IMD)_2019/FeatureServer/0/query?where=lsoa11nm%3D%27{}%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token='.format(df['LSOA'][i]))
-        df['IMD Decile'].iloc[i] = s.json()['features'][0]['attributes']['IMDDec0']
-        df['IMD Rank'].iloc[i] = s.json()['features'][0]['attributes']['IMDRank0']
-        df['IMD Score'].iloc[i] = s.json()['features'][0]['attributes']['IMDScore']
+        try:
+            s = requests.get('https://services3.arcgis.com/ivmBBrHfQfDnDf8Q/arcgis/rest/services/Indices_of_Multiple_Deprivation_(IMD)_2019/FeatureServer/0/query?where=lsoa11nm%3D%27{}%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token='.format(df['LSOA'][i]))
+            df['IMD Decile'].iloc[i] = s.json()['features'][0]['attributes']['IMDDec0']
+            df['IMD Rank'].iloc[i] = s.json()['features'][0]['attributes']['IMDRank0']
+            df['IMD Score'].iloc[i] = s.json()['features'][0]['attributes']['IMDScore']
+        except:
+            df['IMD Decile'].iloc[i] = 0
+            df['IMD Rank'].iloc[i] = 0
+            df['IMD Score'].iloc[i] = 0
+        continue 
 
     # append AP
     ap_df = pd.read_csv('https://raw.githubusercontent.com/jenniferbufton/Postcode-lookup/main/LA_ActivePartnerships_lookup_20200512.csv')
@@ -131,7 +136,7 @@ try:
     for i in range(len(df)):
         folium.Circle(
         location=[df['Latitude'][i], df['Longitude'][i]],
-        popup=('IMD Decile: {} \n IMD Rank: {:,}' .format(df['IMD Decile'].iloc[i],df['IMD Rank'].iloc[i])),
+        popup=('IMD Decile: {} \n IMD Rank: {}' .format(df['IMD Decile'].iloc[i],df['IMD Rank'].iloc[i])),
         radius=150,
         color='#dd3497',
         fill=True,
@@ -165,9 +170,10 @@ try:
 
     
 
-except:
+except Exception as e:
     st.sidebar.write('*Please upload a valid CSV file* :sunglasses:')
     st.write('Use the file upload widget in the sidebar to upload a CSV file containing the postcodes you are looking up.')
     st.write('The data should be structured as per the image below:')
     st.image('Example.JPG')
+    st.write(e)
 
