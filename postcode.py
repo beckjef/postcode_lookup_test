@@ -186,5 +186,4 @@ except Exception as e:
     st.write('Use the file upload widget in the sidebar to upload a CSV file containing the postcodes you are looking up.')
     st.write('The data should be structured as per the image below:')
     st.image('Example.JPG')
-    st.write(e)
 
