@@ -50,7 +50,15 @@ try:
             region.append(r.json()['result']['region'])
             county.append(r.json()['result']['admin_county'])
         except:
-            print('Not a valid postcode')
+            lat.append('Not valid')
+            lon.append('Not valid')
+            la.append('Not valid')
+            lsoa.append('Not valid')
+            ew.append('Not valid')
+            pc.append('Not valid')
+            region.append('Not valid')
+            county.append('Not valid')
+        continue
 
     df = pd.DataFrame(list(zip(p_code,region, county, la, pc, ew, lsoa, lat, lon)), 
                     columns= ['Postcode','Region', 'County','Local Authority', 'Parliamentary Constituency', 'Electoral Ward',
@@ -78,7 +86,7 @@ try:
     # append AP
     ap_df = pd.read_csv('https://raw.githubusercontent.com/jenniferbufton/Postcode-lookup/main/LA_ActivePartnerships_lookup_20200512.csv')
     ap_df = ap_df[['LA_Name', 'Active_Partnership_Label']]
-    df = df.merge(ap_df, how='inner', left_on= 'Local Authority', right_on='LA_Name')
+    df = df.merge(ap_df, how='left', left_on= 'Local Authority', right_on='LA_Name')
     df.drop(['LA_Name'], axis=1, inplace=True)
     df.rename({'Active_Partnership_Label': 'Active Partnership'}, axis=1, inplace=True)
 
@@ -91,7 +99,10 @@ try:
         zxy_path = 'https://api.os.uk/maps/raster/v1/zxy/{}/{{z}}/{{x}}/{{y}}.png?key={}'.format(layer, key)
 #print('=> Constructed OS Maps ZXY API path: {}'.format(zxy_path))
     # create map
-        m = folium.Map(location=[df['Latitude'][0], df['Longitude'][0]],
+
+        map_df = df[df['Latitude'] != 'Not valid']
+        map_df.reset_index(inplace = True, drop=True)
+        m = folium.Map(location=[map_df['Latitude'][0], map_df['Longitude'][0]],
                     min_zoom=7, 
                     max_zoom=16,
                     zoom_start=15 )
@@ -133,10 +144,10 @@ try:
 
     marker_cluster = MarkerCluster().add_to(point)
 
-    for i in range(len(df)):
+    for i in range(len(map_df)):
         folium.Circle(
-        location=[df['Latitude'][i], df['Longitude'][i]],
-        popup=('IMD Decile: {} \n IMD Rank: {}' .format(df['IMD Decile'].iloc[i],df['IMD Rank'].iloc[i])),
+        location=[map_df['Latitude'][i], map_df['Longitude'][i]],
+        popup=('IMD Decile: {} \n IMD Rank: {}' .format(map_df['IMD Decile'].iloc[i],map_df['IMD Rank'].iloc[i])),
         radius=150,
         color='#dd3497',
         fill=True,
