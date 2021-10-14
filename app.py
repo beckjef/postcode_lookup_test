@@ -15,17 +15,11 @@ st.write('# Postcode Lookup')
 # add sidebar logo and input
 st.sidebar.image('logo.png')
 
-st.sidebar.write('### Please upload a CSV file with a single column of postcodes')
+st.sidebar.write('Enter a postcode in the "Postcode finder" widget')
 
-postcodes = st.sidebar.file_uploader('File uploader', type=['csv'])
 try:
-    if postcodes is not None:
-        file_details = {"FileName":postcodes.name,"FileType":postcodes.type,"FileSize":postcodes.size}
-        st.write(file_details)
-        df_pcode = pd.read_csv(postcodes, header=None)
-        p_code = df_pcode[0]
+    latlon = st.sidebar.text_input('Postcode finder:', value='WC1B 3HF', max_chars=8, key=None, type='default')
 
-    
     # get data
 
     lat = []
@@ -36,29 +30,29 @@ try:
     pc = []
     region = []
     county = []
+    post = []
 
-   # my_bar = st.progress(0)
+    # my_bar = st.progress(0)
     with st.spinner('Processing...'):
-        for i in range(len(p_code)):
-            try:
+        def get_data(p_code):
             # my_bar.progress(i + 1)
-                r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p_code[i]))
-                lat.append(r.json()['result']['latitude'])
-                lon.append(r.json()['result']['longitude'])
-                la.append(r.json()['result']['admin_district'].split(',')[0])
-                lsoa.append(r.json()['result']['lsoa'])
-                ew.append(r.json()['result']['admin_ward'])
-                pc.append(r.json()['result']['parliamentary_constituency'])
-                region.append(r.json()['result']['region'])
-                county.append(r.json()['result']['admin_county'])
-            except:
-                print('Not a valid postcode')
+            r = requests.get('https://api.postcodes.io/postcodes/{}'.format(p_code))
+            lat.append(r.json()['result']['latitude'])
+            lon.append(r.json()['result']['longitude'])
+            la.append(r.json()['result']['admin_district'].split(',')[0])
+            lsoa.append(r.json()['result']['lsoa'])
+            ew.append(r.json()['result']['admin_ward'])
+            pc.append(r.json()['result']['parliamentary_constituency'])
+            region.append(r.json()['result']['region'])
+            county.append(r.json()['result']['admin_county'])
+            post.append(r.json()['result']['postcode'])
 
-            df = pd.DataFrame(list(zip(p_code,region, county, la, pc, ew, lsoa, lat, lon)), 
+            df = pd.DataFrame(list(zip(post,region, county, la, pc, ew, lsoa, lat, lon)),
                             columns= ['Postcode','Region', 'County','Local Authority', 'Parliamentary Constituency', 'Electoral Ward',
                                     'LSOA', 'Latitude', 'Longitude'])
+            return df
 
-        
+        df= get_data(latlon)
 
         df['IMD Decile'] =""
         df['IMD Rank'] =""
@@ -80,21 +74,21 @@ try:
         df.rename({'Active_Partnership_Label': 'Active Partnership'}, axis=1, inplace=True)
 
         try:
-            # API for OS 
-            # key = st.secrets["key"]
+            # API for OS
+            key = st.secrets["key"]
             date = datetime.now()
-            key = os.environ["key"]
+            #key = os.environ["key"]
             layer = 'Outdoor_3857'
             zxy_path = 'https://api.os.uk/maps/raster/v1/zxy/{}/{{z}}/{{x}}/{{y}}.png?key={}'.format(layer, key)
     #print('=> Constructed OS Maps ZXY API path: {}'.format(zxy_path))
         # create map
             m = folium.Map(location=[df['Latitude'][0], df['Longitude'][0]],
-                        min_zoom=7, 
+                        min_zoom=7,
                         max_zoom=16,
                         zoom_start=15 )
         except:
             m = folium.Map(location=[51.108964, -0.754399],
-                        min_zoom=7, 
+                        min_zoom=7,
                         max_zoom=16,
                         zoom_start=15 )
 
@@ -112,7 +106,7 @@ try:
                 name = 'Esri Satellite',
                 overlay = False,
                 control = True
-            ).add_to(m)                 
+            ).add_to(m)
 
         style_0 = {'fillColor': '#2ca25f',  'color': '#2ca25f', "fillOpacity": 0.1, "weight": 1.7}
 
@@ -134,7 +128,7 @@ try:
             folium.Circle(
             location=[df['Latitude'][i], df['Longitude'][i]],
             popup=('IMD Decile: {} \n IMD Rank: {:,}' .format(df['IMD Decile'].iloc[i],df['IMD Rank'].iloc[i])),
-            radius=150,
+            radius=50,
             color='#dd3497',
             fill=True,
             fill_color='#dd3497',
@@ -150,27 +144,24 @@ try:
     folium_static(m)
 
     # add dataframe
-    st.write("#### Administrative Geographies and IMD:")
-    st.write(df)
+    st.write("#### Administrative Geographies and IMD Decile:")
 
+    df.drop(['IMD Rank', 'IMD Score', 'Latitude', 'Longitude'], axis=1, inplace=True)
 
+    st.table(df)
 
     def get_table_download_link_csv(df):
-        #csv = df.to_csv(index=False)
         csv = df.to_csv().encode()
-        #b64 = base64.b64encode(csv.encode()).decode() 
         b64 = base64.b64encode(csv).decode()
-        href = f'<a href="data:file/csv;base64,{b64}" download="captura.csv" target="_blank">Download CSV file:</a>'
+        href = f'<a href="data:file/csv;base64,{b64}" download="Postcode.csv" target="_blank">Download CSV file:</a>'
         return href
 
     st.sidebar.write('### Download the results:')
     st.sidebar.markdown(get_table_download_link_csv(df), unsafe_allow_html=True)
 
-    
-
 except:
-    st.sidebar.write('*Please upload a valid CSV file* :sunglasses:')
-    st.write('Use the file upload widget in the sidebar to upload a CSV file containing the postcodes you are looking up.')
-    st.write('The data should be structured as per the image below:')
-    st.image('Example.JPG')
+    st.sidebar.write('*Please use a valid postcode* :sunglasses:')
+   # st.write('Use the file upload widget in the sidebar to upload a CSV file containing the postcodes you are looking up.')
+   # st.write('The data should be structured as per the image below:')
+  #  st.image('Example.JPG')
 
