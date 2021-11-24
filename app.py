@@ -67,7 +67,7 @@ try:
             df['IMD Score'].iloc[i] = s.json()['features'][0]['attributes']['IMDScore']
 
         # append AP
-        ap_df = pd.read_csv('https://raw.githubusercontent.com/jenniferbufton/Postcode-lookup/main/LA_ActivePartnerships_lookup_20200512.csv')
+        ap_df = pd.read_csv('https://raw.githubusercontent.com/jenniferbufton/Postcode-lookup/main/data/LA_ActivePartnerships_lookup_20200512.csv')
         ap_df = ap_df[['LA_Name', 'Active_Partnership_Label']]
         df = df.merge(ap_df, how='inner', left_on= 'Local Authority', right_on='LA_Name')
         df.drop(['LA_Name'], axis=1, inplace=True)
@@ -110,7 +110,7 @@ try:
 
         style_0 = {'fillColor': '#2ca25f',  'color': '#2ca25f', "fillOpacity": 0.1, "weight": 1.7}
 
-        ap = requests.get('https://raw.githubusercontent.com/jenniferbufton/flood_app/main/data/AP.json').json()
+        ap = requests.get('https://raw.githubusercontent.com/jenniferbufton/Postcode-lookup/main/data/AP.json').json()
 
         fg = folium.FeatureGroup(name='Active Partnership', show=True)
         m.add_child(fg)
