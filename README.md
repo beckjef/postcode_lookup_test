@@ -5,6 +5,9 @@ An application to provide a user with the boundary information and the Indices o
 - Boundary data was derived from [Postcodes.io](http://postcodes.io/)
 - Active Partnership boundaries are a [Sport England](https://www.sportengland.org/) custom geography.
 
-![](https://github.com/jenniferbufton/Postcode-lookup/main/images/img.JPG)
+Streamlit application is available on [streamlit.io](https://share.streamlit.io/jenniferbufton/postcode-lookup/main/app.py).
+
+![](https://github.com/jenniferbufton/postcode-lookup/blob/main/images/img.PNG)
+
 
 OS data © Crown copyright and database right 2021
