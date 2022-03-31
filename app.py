@@ -9,7 +9,7 @@ import json
 import base64
 import os
 import click
-import blanca
+import branca
 from datetime import datetime
 
 st.write('# Postcode Lookup')
