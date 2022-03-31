@@ -4,3 +4,4 @@ backgroundColor="#8b908a"
 secondaryBackgroundColor="#1e1f29"
 textColor="#efeaea"
 font="monospace"
+headless = true
