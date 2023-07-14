@@ -148,7 +148,7 @@ try:
     # add dataframe
     st.write("#### Administrative Geographies and IMD Decile:")
 
-    # df.drop(['IMD Rank', 'IMD Score', 'Latitude', 'Longitude'], axis=1, inplace=True)
+    df.drop(['IMD Rank', 'IMD Score', 'Latitude', 'Longitude'], axis=1, inplace=True)
 
     # st.table(df)
 
