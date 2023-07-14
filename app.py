@@ -145,6 +145,11 @@ with st.spinner('Processing...'):
 # add map
 folium_static(m)
 
+# add dataframe
+st.write("#### Administrative Geographies and IMD Decile:")
+
+df.drop(['IMD Rank', 'IMD Score', 'Latitude', 'Longitude'], axis=1, inplace=True)
+
 def get_table_download_link_csv(df):
     csv = df.to_csv().encode()
     b64 = base64.b64encode(csv).decode()
@@ -153,15 +158,6 @@ def get_table_download_link_csv(df):
 
 st.sidebar.write('### Download the results:')
 st.sidebar.markdown(get_table_download_link_csv(df), unsafe_allow_html=True)
-
-# add dataframe
-st.write("#### Administrative Geographies and IMD Decile:")
-
-df.drop(['IMD Rank', 'IMD Score', 'Latitude', 'Longitude'], axis=1, inplace=True)
-
-# if below line is included, download option disappears. But error only applies to table.
-# if excluded, data download works & is populated.
-st.table(df)
 
 # except:
    # st.sidebar.write('*Please use a valid postcode* :sunglasses:')
