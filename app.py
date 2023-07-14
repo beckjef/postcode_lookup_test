@@ -19,7 +19,7 @@ st.sidebar.image('logo.png')
 
 st.sidebar.write('Enter a postcode in the "Postcode finder" widget')
 
-try:
+# try:
     latlon = st.sidebar.text_input('Postcode finder:', value='WC1B 3HF', max_chars=8, key=None, type='default')
 
     # get data
@@ -150,7 +150,7 @@ try:
 
     df.drop(['IMD Rank', 'IMD Score', 'Latitude', 'Longitude'], axis=1, inplace=True)
 
-    st.write(df)
+    # st.table(df)
 
     def get_table_download_link_csv(df):
         csv = df.to_csv().encode()
@@ -161,8 +161,8 @@ try:
     st.sidebar.write('### Download the results:')
     st.sidebar.markdown(get_table_download_link_csv(df), unsafe_allow_html=True)
 
-except:
-    st.sidebar.write('*Please use a valid postcode* :sunglasses:')
+# except:
+    # st.sidebar.write('*Please use a valid postcode* :sunglasses:')
    # st.write('Use the file upload widget in the sidebar to upload a CSV file containing the postcodes you are looking up.')
    # st.write('The data should be structured as per the image below:')
   #  st.image('Example.JPG')
