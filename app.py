@@ -69,7 +69,7 @@ try:
             df['IMD Score'].iloc[i] = s.json()['features'][0]['attributes']['IMDScore']
 
         # append AP
-        ap_df = pd.read_csv('https://raw.githubusercontent.com/dominicwoodfine/Postcode-lookup/main/data/LA_ActivePartnerships_lookup_20200512.csv')
+        ap_df = pd.read_csv('https://raw.githubusercontent.com/beckjef/Postcode_lookup_test/main/data/LA_ActivePartnerships_lookup_20200512.csv')
         ap_df = ap_df[['LA_Name', 'Active_Partnership_Label']]
         df = df.merge(ap_df, how='inner', left_on= 'Local Authority', right_on='LA_Name')
         df.drop(['LA_Name'], axis=1, inplace=True)
@@ -79,7 +79,7 @@ try:
             # API for OS
             #key = st.secrets["key"]
             date = datetime.now()
-            key = '7mzGvy71yP6363qSVpAooF8AK8AEEPdX'
+            key = 'Quy2ffdNffhOiGGVIhxlpGwGkk7nhij0'
             layer = 'Outdoor_3857'
             zxy_path = 'https://api.os.uk/maps/raster/v1/zxy/{}/{{z}}/{{x}}/{{y}}.png?key={}'.format(layer, key)
     #print('=> Constructed OS Maps ZXY API path: {}'.format(zxy_path))
@@ -112,7 +112,7 @@ try:
 
         style_0 = {'fillColor': '#2ca25f',  'color': '#2ca25f', "fillOpacity": 0.1, "weight": 1.7}
 
-        ap = requests.get('https://raw.githubusercontent.com/dominicwoodfine/Postcode-lookup/main/data/AP.json').json()
+        ap = requests.get('https://raw.githubusercontent.com/beckjef/postcode_lookup_test/main/data/AP.json').json()
 
         fg = folium.FeatureGroup(name='Active Partnership', show=True)
         m.add_child(fg)
@@ -166,4 +166,3 @@ except:
    # st.write('Use the file upload widget in the sidebar to upload a CSV file containing the postcodes you are looking up.')
    # st.write('The data should be structured as per the image below:')
   #  st.image('Example.JPG')
-
