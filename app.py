@@ -150,7 +150,7 @@ try:
 
     # df.drop(['IMD Rank', 'IMD Score', 'Latitude', 'Longitude'], axis=1, inplace=True)
 
-    st.table(df)
+    # st.table(df)
 
     def get_table_download_link_csv(df):
         csv = df.to_csv().encode()
