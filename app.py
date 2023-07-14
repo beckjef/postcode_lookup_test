@@ -159,6 +159,8 @@ def get_table_download_link_csv(df):
 st.sidebar.write('### Download the results:')
 st.sidebar.markdown(get_table_download_link_csv(df), unsafe_allow_html=True)
 
+st.table(df)
+
 # except:
    # st.sidebar.write('*Please use a valid postcode* :sunglasses:')
    # st.write('Use the file upload widget in the sidebar to upload a CSV file containing the postcodes you are looking up.')
