@@ -152,7 +152,7 @@ df.drop(['IMD Rank', 'IMD Score', 'Latitude', 'Longitude'], axis=1, inplace=True
 
 # if below line is included, download option disappears. But error only applies to table.
 # if excluded, data download works & is populated.
-# st.table(df)
+st.dataframe(df)
 
 def get_table_download_link_csv(df):
     csv = df.to_csv().encode()
