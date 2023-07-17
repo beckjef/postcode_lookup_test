@@ -5,6 +5,7 @@ from streamlit_folium import folium_static
 import folium
 from folium.plugins import MarkerCluster
 import requests
+r = requests.get('http://github.com/', allow_redirects=False)
 import json
 import base64
 import os
